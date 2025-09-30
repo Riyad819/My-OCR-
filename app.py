@@ -67,6 +67,3 @@ def upload_file():
                 "error": recognized_text 
             }), 500
 
-if __name__ == '__main__':
-    # সার্ভার শুরু করা
-    app.run(host='0.0.0.0', port=5000)
