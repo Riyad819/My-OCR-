@@ -1,10 +1,7 @@
-[Immersive content redacted for brevity.]
-```eof
-
-### আপনার করণীয়:
-
-1.  **`Dockerfile` প্রতিস্থাপন:** GitHub-এ এই নতুন কোডটি দিয়ে **`Dockerfile`** ফাইলটি **সেভ** করুন।
-2.  **Render ডিপ্লয়মেন্ট:** Render স্বয়ংক্রিয়ভাবে নতুন বিল্ড শুরু করবে। এই বিল্ডটি **৫ থেকে ৭ মিনিট** সময় নিতে পারে।
-3.  **অপেক্ষা ও পরীক্ষা:** যখন Render-এ স্ট্যাটাস **`Live`** দেখাবে, তখন আপনার লিঙ্কটি (`https://text-detector.onrender.com` বা আপনার লিঙ্ক) চেক করুন।
-
-এই ফিক্সটি Render-এ Tesseract নির্ভরতা ইনস্টল করার জন্য সবচেয়ে নির্ভরযোগ্য উপায়।
+FROM python:3.9-slim-buster
+RUN apt-get update && apt-get install -y tesseract-ocr
+WORKDIR /app
+COPY . /app
+RUN pip install --no-cache-dir -r requirements.txt
+EXPOSE 8080
+CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:8080"]
