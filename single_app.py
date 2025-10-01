@@ -109,9 +109,3 @@ def upload_file():
                 error = 'File type not allowed. Use PNG, JPG, or JPEG.'
                 
     return render_page(extracted_text=extracted_text, error=error)
-
-
-if __name__ == '__main__':
-    # Ensure the /tmp directory exists
-    os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-    application.run(debug=True)
