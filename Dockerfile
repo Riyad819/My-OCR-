@@ -1,7 +1,15 @@
 FROM python:3.9-slim-bullseye
 
-# Tesseract installation removed here to fix Exit Code 100 error.
-# Tesseract will be handled via the updated requirements.txt
+# Set up environment variables for Tesseract download
+ENV TESSERACT_VERSION 5.3.4
+ENV TESSDATA_VERSION 4.1.0
+
+# Install necessary system dependencies (wget for downloading) and Tesseract itself
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    wget \
+    tesseract-ocr \
+    tesseract-ocr-eng && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
