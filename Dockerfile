@@ -1,6 +1,6 @@
 FROM python:3.9-slim-bullseye
 
-# Set up environment variables for Tesseract download
+# Set up environment variables for Tesseract download (Optional, but good practice)
 ENV TESSERACT_VERSION 5.3.4
 ENV TESSDATA_VERSION 4.1.0
 
@@ -17,4 +17,4 @@ COPY . /app
 RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 8080
-CMD gunicorn single_app:application --bind 0.0.0.0:$PORT
+CMD gunicorn single_app:app --bind 0.0.0.0:$PORT
