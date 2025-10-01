@@ -1,10 +1,10 @@
 FROM python:3.9-slim-bullseye
 
-# Set up environment variables for Tesseract download (Optional, but good practice)
+# Set up environment variables for Tesseract download
 ENV TESSERACT_VERSION 5.3.4
 ENV TESSDATA_VERSION 4.1.0
 
-# Install necessary system dependencies (wget for downloading) and Tesseract itself
+# Install necessary system dependencies and Tesseract itself
 RUN apt-get update && apt-get install -y --no-install-recommends \
     wget \
     tesseract-ocr \
@@ -17,4 +17,5 @@ COPY . /app
 RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 8080
-CMD gunicorn single_app:app
+# Final fix for Gunicorn run-time error using Array Form
+CMD ["gunicorn", "single_app:app", "--bind", "0.0.0.0:8080"]
