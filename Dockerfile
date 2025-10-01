@@ -3,7 +3,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     tesseract-ocr \
     libtesseract4 \
     tesseract-ocr-eng \
-    tesseract-ocr-dev
 WORKDIR /app
 COPY . /app
 RUN pip install --no-cache-dir -r requirements.txt
