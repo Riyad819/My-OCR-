@@ -1,6 +1,6 @@
 import os
 import io
-from flask import Flask, request, Response
+from flask import Flask, request
 from PIL import Image
 import pytesseract
 from werkzeug.utils import secure_filename
