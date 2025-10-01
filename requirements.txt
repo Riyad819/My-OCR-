@@ -2,3 +2,5 @@ Flask
 Pillow
 pytesseract
 gunicorn
+# New package to help install Tesseract dependency in the background
+tesseract-ocr-installation
