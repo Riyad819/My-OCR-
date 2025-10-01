@@ -1,5 +1,4 @@
 Flask
-gunicorn
 Pillow
 pytesseract
-numpy
+gunicorn
